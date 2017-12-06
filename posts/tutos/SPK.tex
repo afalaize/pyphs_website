@@ -1,0 +1,167 @@
+%
+\documentclass[11pt, oneside]{article}      % use 'amsart' instead of 'article' for AMSLaTeX format
+\usepackage{geometry}                       % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                      % ... or a4paper or a5paper or ...
+%\geometry{landscape}                       % Activate for for rotated page geometry
+\usepackage[parfill]{parskip}               % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}                       % Use pdf, png, jpg, or eps with pdflatex; use eps in DVI mode
+                                        % TeX will automatically convert eps --> pdf in pdflatex
+\usepackage{amssymb}
+%\date{\today}                              % Activate to display a given date or no date
+\title{Thiele-Small based nonlinear model of loudspeakers}
+%
+\usepackage{authblk}
+\usepackage{hyperref}
+%\renewcommand\Authands{ and }
+%
+%
+\author[1]{Author A}
+%
+\author[2]{Author B}
+%
+\affil[1]{Academic institution A, address A, Country A}
+%
+\affil[2]{Academic institution B, address B, Country B}
+%
+\begin{document}
+%
+\maketitle
+%
+%
+\section{System dimensions}
+%
+$\dim(\mathbf{x})=$ $ n_\mathbf{x} = 3 ; $ 
+%
+\\
+%
+$\dim(\mathbf{w})=$ $ n_\mathbf{w} = 0 ; $ 
+%
+\\
+%
+$\dim(\mathbf{y})=$ $ n_\mathbf{y} = 1 ; $ 
+%
+\\
+%
+$\dim(\mathbf{p})=$ $ n_\mathbf{p} = 0 ; $ 
+%
+\\
+%
+%
+\section{System variables}
+%
+State variable $ \mathbf{x} = \left(\begin{array}{c}x_{\mathrm{L}}\\x_{\mathrm{K}}\\x_{\mathrm{M}}\end{array}\right) ; $ 
+%
+\\
+%
+Input $ \mathbf{u} = \left(\begin{array}{c}u_{\mathrm{1}}\end{array}\right) ; $ 
+%
+\\
+%
+Output $ \mathbf{y} = \left(\begin{array}{c}y_{\mathrm{1}}\end{array}\right) ; $ 
+%
+\\
+%
+%
+\section{Constitutive relations}
+%
+Hamiltonian $ \mathtt{H}(\mathbf{x}) = \frac{K}{2} \cdot x_{\mathrm{K}}^{2} + \frac{invL}{2} \cdot x_{\mathrm{L}}^{2} + \frac{invM}{2} \cdot x_{\mathrm{M}}^{2} ; $ 
+%
+\\
+%
+Hamiltonian gradient $ \nabla \mathtt{H}(\mathbf{x}) = \left(\begin{array}{c}invL \cdot x_{\mathrm{L}}\\K \cdot x_{\mathrm{K}}\\invM \cdot x_{\mathrm{M}}\end{array}\right) ; $ 
+%
+\\
+%
+%
+\section{System parameters}
+%
+%
+\subsection{Constant}
+%
+\begin{center}
+%
+\begin{tabular}{ll}
+%
+\hline
+parameter & value (SI)
+\\ \hline
+L :& 0.011
+\\
+R :& 5.7
+\\
+K :& 40000000.0
+\\
+M :& 0.019
+\\
+A :& 0.406
+\\
+invL :& 90.90909090909092
+\\
+invM :& 52.631578947368425
+\\
+\hline
+\end{tabular}
+%
+\end{center}
+%
+\section{System structure}
+%
+
+%
+$ \mathbf{M} = \left(\begin{array}{cccc}- R & 0 & - B \cdot e^{- x_{\mathrm{K}}^{2}} & -1\\0 & 0 & 1 & 0\\B \cdot e^{- x_{\mathrm{K}}^{2}} & -1 & - A & 0\\1 & 0 & 0 & 0\end{array}\right) ; $ 
+%
+\\
+%
+$ \mathbf{M_{xx}} = \left(\begin{array}{ccc}- R & 0 & - B \cdot e^{- x_{\mathrm{K}}^{2}}\\0 & 0 & 1\\B \cdot e^{- x_{\mathrm{K}}^{2}} & -1 & - A\end{array}\right) ; $ 
+%
+\\
+%
+$ \mathbf{M_{xy}} = \left(\begin{array}{c}-1\\0\\0\end{array}\right) ; $ 
+%
+\\
+%
+$ \mathbf{M_{yx}} = \left(\begin{array}{ccc}1 & 0 & 0\end{array}\right) ; $ 
+%
+\\
+%
+$ \mathbf{M_{yy}} = \left(\begin{array}{c}0\end{array}\right) ; $ 
+%
+\\
+%
+
+%
+$ \mathbf{J} = \left(\begin{array}{cccc}0 & 0 & - 1.0 \cdot B \cdot e^{- x_{\mathrm{K}}^{2}} & -1.0\\0 & 0 & 1.0 & 0\\1.0 \cdot B \cdot e^{- x_{\mathrm{K}}^{2}} & -1.0 & 0 & 0\\1.0 & 0 & 0 & 0\end{array}\right) ; $ 
+%
+\\
+%
+$ \mathbf{J_{xx}} = \left(\begin{array}{ccc}0 & 0 & - 1.0 \cdot B \cdot e^{- x_{\mathrm{K}}^{2}}\\0 & 0 & 1.0\\1.0 \cdot B \cdot e^{- x_{\mathrm{K}}^{2}} & -1.0 & 0\end{array}\right) ; $ 
+%
+\\
+%
+$ \mathbf{J_{xy}} = \left(\begin{array}{c}-1.0\\0\\0\end{array}\right) ; $ 
+%
+\\
+%
+$ \mathbf{J_{yy}} = \left(\begin{array}{c}0\end{array}\right) ; $ 
+%
+\\
+%
+
+%
+$ \mathbf{R} = \left(\begin{array}{cccc}1.0 \cdot R & 0 & 0 & 0\\0 & 0 & 0 & 0\\0 & 0 & 1.0 \cdot A & 0\\0 & 0 & 0 & 0\end{array}\right) ; $ 
+%
+\\
+%
+$ \mathbf{R_{xx}} = \left(\begin{array}{ccc}1.0 \cdot R & 0 & 0\\0 & 0 & 0\\0 & 0 & 1.0 \cdot A\end{array}\right) ; $ 
+%
+\\
+%
+$ \mathbf{R_{xy}} = \left(\begin{array}{c}0\\0\\0\end{array}\right) ; $ 
+%
+\\
+%
+$ \mathbf{R_{yy}} = \left(\begin{array}{c}0\end{array}\right) ; $ 
+%
+\\
+%
+\end{document}
