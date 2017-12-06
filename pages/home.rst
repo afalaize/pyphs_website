@@ -212,7 +212,7 @@ Most of the documentation can be found in the `website <https://pyphs.github.io/
 In particular, you can see the two following resources:
 
 - The `slides <https://pyphs.github.io/pyphs/PyPHS_IRCAM_seminar_041217.pdf>`_ from a talk given at IRCAM that introduces most the scientific background.
-- The `tutorial <https://pyphs.github.io/pyphs/PyPHS_TUTORIAL.zip>`_.
+- The `tutorial <https://pyphs.github.io/pyphs/PyPHS_TUTORIAL.zip>`_ that shows practical usage of most PyPHS objects (3Mb).
 
 
 
